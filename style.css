@@ -16,7 +16,9 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	width: 700px;
-	gap: 0.7px;
+	border-radius: 4px;
+	overflow: hidden;
+	/* gap: 0.7px; */
 }
 .container {
 	display: flex;

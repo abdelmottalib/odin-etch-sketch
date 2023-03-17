@@ -5,7 +5,9 @@ const variablz = document.querySelectorAll('.buttons');
 
 let varr = 0;
 let flag = 0;
+let drawing = 0;
 let color = "red";
+
 colorChosen.addEventListener('input', (e)=> {
 	color = e.target.value;
 })
@@ -19,24 +21,27 @@ variablz.forEach(variable=>variable.addEventListener('click', (e)=> {
 		const qq = 600 / sq;
 		cell.style.width = `${qq}px`;
 		cell.style.height = `${qq}px`;
-		cell.style.border = "1px solid black";
+		cell.style.backgroundColor = "white"
+		// cell.style.border = "1px solid black";
 		board.appendChild(cell);
 	}
+	addEventListener('mousedown', ()=> {drawing = true});
 	randomNum.addEventListener('click', ()=> {
 		flag = 1;
 		console.log(color);
 	})
 	const cellz = document.querySelectorAll('.cellz');
-	cellz.forEach(celll => celll.addEventListener('mouseover', ()=> {
-		if (flag) {
-			let randomGen1 = Math.floor(Math.random() * 256);
-			let randomGen2 = Math.floor(Math.random() * 256);
-			let randomGen3 = Math.floor(Math.random() * 256);
-			color = `rgb(${randomGen1}, ${randomGen2}, ${randomGen3})`
+	cellz.forEach(celll => celll.addEventListener('mousemove', ()=> {
+		if (drawing) {
+			if (flag) {
+				let randomGen1 = Math.floor(Math.random() * 256);
+				let randomGen2 = Math.floor(Math.random() * 256);
+				let randomGen3 = Math.floor(Math.random() * 256);
+				color = `rgb(${randomGen1}, ${randomGen2}, ${randomGen3})`
+			}
+			celll.style.backgroundColor = color;
 		}
-		celll.style.backgroundColor = color;
 	}))
+	addEventListener('mouseup', ()=> {drawing = false});
 }))
-let random = Math.floor(Math.random() * 256);
-console.log(random);
 
