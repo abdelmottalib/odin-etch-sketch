@@ -21,7 +21,16 @@ body {
 .container {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+}
+.controls-color {
+	display: flex;
+	gap: 70px;
+}
+.controls {
+	display: flex;
+	gap: 25px;
 }
 label {
 	margin-bottom: 15px;

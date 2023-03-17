@@ -9,14 +9,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- <h2>choose your grid and the color to paint with</h2> -->
   <div class="container">
-    <label> choose your grid and the color to paint with</label>
-    <div class="buttons">
-      <button>16</button>
-      <button>437</button>
-      <button>616</button>
-      <button>1209</button>
-      <input type="color" class="color">
+    <label>choose your grid and colors</label>
+    <div class="controls-color">
+      <div class="buttons">
+        <button>16</button>
+        <button>437</button>
+        <button>616</button>
+        <button>1209</button>
+      </div>
+      <div class="controls">
+        <input type="color" class="color">
+        <button id="random">ranbow</button>
+      </div>
     </div>
     <div id="board"></div>
   </div>
