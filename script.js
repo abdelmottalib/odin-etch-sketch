@@ -1,4 +1,5 @@
 const board = document.getElementById('board');
+const eraserr = document.getElementById('eraser');
 const randomNum = document.getElementById('random');
 const colorChosen = document.querySelector('.color');
 const variablz = document.querySelectorAll('.buttons');
@@ -6,14 +7,29 @@ const variablz = document.querySelectorAll('.buttons');
 let varr = 0;
 let flag = 0;
 let drawing = 0;
-let color = "red";
+let eraseFlag = 0;
+let color = "black";
 
-colorChosen.addEventListener('input', (e)=> {
-	color = e.target.value;
-})
+
+colorPicker();
 variablz.forEach(variable=>variable.addEventListener('click', (e)=> {
 	varr = parseInt(e.target.textContent);
 	board.innerHTML = "";
+	drawBoard(varr);
+	addEventListener('mousedown', ()=> {drawing = true});
+	randomNum.addEventListener('click', ()=> {
+		flag = 1;
+		console.log(color);
+	})
+	const cellz = document.querySelectorAll('.cellz');
+	randomDraw(cellz);
+	eraser(cellz);
+	addEventListener('mouseup', ()=> {drawing = false});
+}))
+
+
+
+function drawBoard(varr) {
 	for (let index = 0; index < varr; index++) {
 		const cell = document.createElement('div');
 		cell.classList.add('cellz');
@@ -22,15 +38,11 @@ variablz.forEach(variable=>variable.addEventListener('click', (e)=> {
 		cell.style.width = `${qq}px`;
 		cell.style.height = `${qq}px`;
 		cell.style.backgroundColor = "white"
-		// cell.style.border = "1px solid black";
 		board.appendChild(cell);
 	}
-	addEventListener('mousedown', ()=> {drawing = true});
-	randomNum.addEventListener('click', ()=> {
-		flag = 1;
-		console.log(color);
-	})
-	const cellz = document.querySelectorAll('.cellz');
+}
+
+function randomDraw(cellz) {
 	cellz.forEach(celll => celll.addEventListener('mousemove', ()=> {
 		if (drawing) {
 			if (flag) {
@@ -42,6 +54,22 @@ variablz.forEach(variable=>variable.addEventListener('click', (e)=> {
 			celll.style.backgroundColor = color;
 		}
 	}))
-	addEventListener('mouseup', ()=> {drawing = false});
-}))
+}
 
+function eraser(cellz) {
+	eraserr.addEventListener('click', ()=> {
+		addEventListener('mousedown', ()=> {eraseFlag = true});
+		cellz.forEach(cell => cell.addEventListener('mousemove', ()=> {
+			if (eraseFlag) {
+				cell.style.backgroundColor = "white";
+			}
+		}));
+	});
+	addEventListener('mouseup', ()=> {eraseFlag = false});
+};
+
+function colorPicker() {
+	colorChosen.addEventListener('input', (e)=> {
+		color = e.target.value;
+	})
+}
