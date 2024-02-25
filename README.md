@@ -1,2 +1,2 @@
 # odin-etch-sketch
-site: https://konami2.github.io/odin-etch-sketch/
+site: https://abdelmottalib.github.io/odin-etch-sketch/
